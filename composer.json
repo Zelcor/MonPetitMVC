@@ -1,0 +1,17 @@
+{
+    "name": "vendor/mon-petit-m-v-c",
+    "description": "Description of project MonPetitMVC.",
+    "authors": [
+        {
+            "name": "clement.loze",
+            "email": "clementloze@hotmail.fr"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "psr-4": {
+            "APP\\": "src",
+            "Tools\\": "includes"
+        }
+    }
+}
