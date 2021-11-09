@@ -44,6 +44,7 @@ class Commande {
     }
 
     public function getNoFacture() {
+        if ($this->noFacture == null){ return "Non facturée";}
         return $this->noFacture;
     }
 
