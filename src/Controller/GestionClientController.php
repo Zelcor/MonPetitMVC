@@ -4,6 +4,7 @@ namespace APP\Controller;
 
 use APP\Model\GestionClientModel;
 use ReflectionClass;
+use \Tools\MyTwig;
 
 class GestionClientController {
     
@@ -14,20 +15,23 @@ class GestionClientController {
         $unClient = $modele->find($id);
         if($unClient){
             $r = new ReflectionClass($this);
-            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "\unClient.php";
+            $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
+            MyTwig::afficheVue($vue, array('unClient' => $unClient));
         } else {
             throw new Exception('Client ' . $id . ' inconnu');
         }
     }
-    public function chercheTous() {
+    public function chercheTous($params) {
         //appel de la méthode findAll() de la classe model adequate
         $modele = new GestionClientModel();
-        $clients = $modele->findAll();
-        if($clients) {
+        $id = filter_var(intval($params["id"]),FILTER_VALIDATE_INT);
+        $unClient = $modele->findAll();
+        if($unClient) {
             $r = new ReflectionClass($this);
-            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "/plusieursClients.php";
+            $vue = str_replace('Controller', 'View', $r->getShortName()) . "/tousClients.html.twig";
+            MyTwig::afficheVue($vue, array('unClient' => $unClient));
         } else {
-            throw new Exception("Aucun Client à afficher");
+            throw new Exception('Client ' . $id . ' inconnu');
         }
     }
 }
