@@ -11,27 +11,36 @@ class GestionClientController {
     public function chercheUn($params){
         //appel de la méthode find($id) de la classe Model adequate
         $modele = new GestionClientModel();
-        $id = filter_var(intval($params["id"]),FILTER_VALIDATE_INT);
-        $unClient = $modele->find($id);
-        if($unClient){
-            $r = new ReflectionClass($this);
-            $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
-            MyTwig::afficheVue($vue, array('unClient' => $unClient));
-        } else {
-            throw new Exception('Client ' . $id . ' inconnu');
+        $ids = $modele->findIds();
+        $params['lesId']=$ids;
+        if(array_key_exists("id",$params)){
+            $id = filter_var(intval($params["id"]),FILTER_VALIDATE_INT);
+            $unClient = $modele->find($id);
         }
+        $r = new ReflectionClass($this);
+        $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
+        MyTwig::afficheVue($vue, $params);
     }
     public function chercheTous($params) {
         //appel de la méthode findAll() de la classe model adequate
         $modele = new GestionClientModel();
-        $id = filter_var(intval($params["id"]),FILTER_VALIDATE_INT);
         $unClient = $modele->findAll();
         if($unClient) {
             $r = new ReflectionClass($this);
             $vue = str_replace('Controller', 'View', $r->getShortName()) . "/tousClients.html.twig";
-            MyTwig::afficheVue($vue, array('unClient' => $unClient));
-        } else {
-            throw new Exception('Client ' . $id . ' inconnu');
+            MyTwig::afficheVue($vue, array('clients' => $unClient));
         }
+    }
+
+    public function creerClient($params){
+        $vue = "GestionClientView\\creerClient.html.twig";
+        MyTwig::afficheVue($vue,array());
+    }
+
+    public function enregistreClient($params){
+        // creation de l'objet client
+        $client = new Client($params);
+        $modele = new GestionClientModel();
+        $modele->enregistreClient($client);
     }
 }

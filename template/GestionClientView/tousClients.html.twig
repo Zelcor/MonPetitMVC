@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
     <h2> Liste des clients </h2>
-    <table style="width:95%">
+    <table border="1" style="width:95%">
         <tr>
             <th>Num</th>
             <th>Nom</th>
@@ -19,14 +19,17 @@
                 <td> {{ unClient.getPrenomCli() }} </td>
                 <td> {{ unClient.getAdresseRue1Cli() }} </td>
                 {% if unClient.getAdresseRue2Cli() %}
-                    <td> {{ unClient.getAdresseRue2Cli() }} </td>
+                    <td> {{ unClient.getAdresseRue2Cli() }}</td>
+                {% else %}
+                    <td>  </td>
                 {% endif %}
                 <td> {{ unClient.getCpCli() }} </td>
                 <td> {{ unClient.getVilleCli() }} </td>
                 <td> {{ unClient.getTelCli() }} </td>
             </tr>
-        {% endfor %}    
+        {% endfor %}
     </table>
+    <p>Nombre de clients trouvés : todo </p>
 {% endblock %}
 {% block footer %}
     {{ parent() }}
