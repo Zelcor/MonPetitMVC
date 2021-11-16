@@ -4,7 +4,10 @@ namespace APP\Controller;
 
 use APP\Model\GestionClientModel;
 use ReflectionClass;
-use \Tools\MyTwig;
+use Exception;
+use Tools\MyTwig;
+use APP\Entity\Client;
+use Tools\Repository;
 
 class GestionClientController {
     
@@ -21,14 +24,15 @@ class GestionClientController {
         $vue = str_replace('Controller', 'View', $r->getShortName()) . "/unClient.html.twig";
         MyTwig::afficheVue($vue, $params);
     }
-    public function chercheTous($params) {
+    
+    public function chercheTous() {
         //appel de la méthode findAll() de la classe model adequate
-        $modele = new GestionClientModel();
-        $unClient = $modele->findAll();
-        if($unClient) {
+        $repository= Repository::getRepository("APP\Entity\Client");
+        $clients = $repository->findAll();
+        if($clients) {
             $r = new ReflectionClass($this);
             $vue = str_replace('Controller', 'View', $r->getShortName()) . "/tousClients.html.twig";
-            MyTwig::afficheVue($vue, array('clients' => $unClient));
+            MyTwig::afficheVue($vue, array('clients' => $clients));
         }
     }
 
