@@ -75,8 +75,40 @@ class Repository {
     
     public function countRows(){
         $sql = "select count(*) as nb from " . $this->table;
-        $ligne = $this->connexion->prepare($sql);
+        $ligne = $this->connexion->query($sql);
         $ligne->execute();
         return $ligne->fetch()['nb'];
+    }
+    
+    public function __call($methode,$params){
+        if(preg_match("#^findBy#", $methode)) {
+            return $this->traiteFindBy($methode, array_values($params[0]));
+        }
+    }
+    
+    private function traiteFindBy($methode, $params) {
+        $criteres = str_replace("findBy", "", $methode);
+        $criteres = explode("_and_", $criteres);
+        if (count($criteres) > 0){
+            $sql = 'select * from ' . $this->table . " where ";
+            $pasPremier = false;
+            foreach ($criteres as $critere){
+                if($pasPremier){
+                    $sql .= ' and ';
+                }
+                $sql .= $critere . " = ? ";
+                $pasPremier = true;
+            }
+            $lignes = $this->connexion->prepare($sql);
+            $lignes->execute($params);
+            $lignes->setFetchMode(PDO::FETCH_CLASS, $this->classeNameLong, null);
+            return $lignes->fetchAll();
+        }
+    }
+    
+    private function findColumnDistinctValues($colonne) {
+        $sql = "select distinct " . $colonne . " libelle from " . $this->table . " order by 1";
+        $tab = $this->connexion->query($sql)->fetchAll(PDO::FETCH_COLUMN);
+        return $tab;
     }
 }

@@ -30,14 +30,12 @@ class GestionClientController {
         //appel de la méthode findAll() de la classe model adequate
         $repository= Repository::getRepository("APP\Entity\Client");
         $clients = $repository->findAll();
-        $nbClients = $repository->countRows();
         if($clients) {
             $r = new ReflectionClass($this);
             $vue = str_replace('Controller', 'View', $r->getShortName()) . "/tousClients.html.twig";
             MyTwig::afficheVue($vue, array('clients' => $clients));
-            //to do : finir
         }
-        
+        $nbClients = $this->nbClients();
     }
 
     public function creerClient($params){
@@ -60,9 +58,41 @@ class GestionClientController {
         $modele->enregistreClient($client);
     }
     
-    public function nbClients($params){
+    public function nbClients()
+    {
         $repository = Repository::getRepository("APP\Entity\Client");
-        $nbClients= $repository->countRows();
-        return "nombre de clients : " . $nbClients;
+        $nbClients = $repository->countRows();
+        echo "nb clients = " . $nbClients;
+    }
+    
+    public function testFindBy($params) {
+        $repository = Repository::getRepository("APP\Entity\Client");
+        $params = array("titreCli" => "Monsieur", "villeCli" => "Toulon");
+        $clients = $repository->findBytitreCli_and_villeCli($params);
+        //$params = array("cpCli" => "14000", "titreCli" => "Madame");
+        //$clients = $repository->findBycpCli_and_titreCli($params);
+        $r = new ReflectionClass($this);
+        $vue = str_replace("Controller", "View", $r->getShortName()) . "/tousClients.html.twig";
+        MyTwig::afficheVue($vue, array('clients' => $clients));
+    }
+        
+    public function rechercheClients($params){
+        $repository = Repository::getRepository("APP\Entity\Client");
+        $titres = $repository->findColumnDistinctValues('titreCli');
+        $cps = $repository->findColumnDistinctValues('cpCli');
+        $villes = $repository->findColumnDistinctValues('villeCli');
+        $params['titres'] = $titres;
+        $params['cps'] = $cps;
+        $params['villes'] = $villes;
+        $vue = "GestionClientView\\filtreClients.html.twig";
+        MyTwig::afficheVue($vue, $params);
+    }
+    
+    public function recupereDesClients($params) {
+        $repository = Repository::getRepository("APP\Entity\Client");
+        $clients = $repository->findBy($params);
+        $r = new ReflectionClass($this);
+        $vue = str_replace('Controller', 'View', $r->getShortName()) . '/tousClients.html.twig';
+        MyTwig::afficheVue($vue, array('clients' => $clients));
     }
 }
