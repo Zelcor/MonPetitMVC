@@ -3,14 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/includes/Repository.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/layout.html.twig</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/config/define.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/config/conf.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/includes/Connexion.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/unClient.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/public/index.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Model/GestionCommandeClientModel.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Model/GestionClientModel.php</file>
             <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Controller/GestionClientController.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Entity/Client.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Entity/Commande.php</file>
             <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/tousClients.html.twig</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/plusieursClients.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionCommandeClientView/CommandeClient.html.twig</file>
         </group>
     </open-files>
 </project-private>

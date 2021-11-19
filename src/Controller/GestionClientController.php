@@ -2,11 +2,13 @@
 
 namespace APP\Controller;
 
+use APP\Model\GestionCommandeClientModel;
 use APP\Model\GestionClientModel;
 use ReflectionClass;
 use Exception;
 use Tools\MyTwig;
 use APP\Entity\Client;
+use APP\Entity\Commande;
 use Tools\Repository;
 
 class GestionClientController {
@@ -94,5 +96,17 @@ class GestionClientController {
         $r = new ReflectionClass($this);
         $vue = str_replace('Controller', 'View', $r->getShortName()) . '/tousClients.html.twig';
         MyTwig::afficheVue($vue, array('clients' => $clients));
+    }
+    
+    public function commandesUnClient($params){
+        $repository= Repository::getRepository("APP\Entity\Client");
+        $id = $params['id'];
+        $client = $repository->find($params);
+        $id = (int)$id;
+        $modele = new GestionCommandeClientModel();
+        $commandes = $modele->findCommandes($id);
+        $vue = 'GestionCommandeClientView/CommandeClient.html.twig';
+        MyTwig::afficheVue($vue, array('commandes' => $commandes));
+        MyTwig::afficheVue($vue, $client);
     }
 }

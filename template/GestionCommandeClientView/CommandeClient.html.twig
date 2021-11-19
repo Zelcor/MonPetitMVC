@@ -1,0 +1,52 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+        <h2 class="text-center"> Identification du client </h2>
+    <table class="table">
+        <tr>
+            <th>Num</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Complement</th>
+            <th>cp</th>
+            <th>Ville</th>
+            <th>Tel</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td> {{ client.getId() }} </td>
+            <td> {{ client.getNomCli() }} </td>
+            <td> {{ client.getPrenomCli() }} </td>
+            <td> {{ client.getAdresseRue1Cli() }} </td>
+            {% if client.getAdresseRue2Cli() %}
+                <td> {{ client.getAdresseRue2Cli() }}</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            <td> {{ client.getCpCli() }} </td>
+            <td> {{ client.getVilleCli() }} </td>
+            <td> {{ client.getTelCli() }} </td>
+        </tr>
+    </table>
+    <h2 class="text-center"> Liste des commandes </h2>
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>idClient</th>
+            <th>Date</th>
+            <th>n°Facture</th>
+        </tr>
+        {% for uneCommande in commandes %}
+            <tr>
+                <td> {{ uneCommande.getId() }} </td>
+                <td> {{ uneCommande.getIdClient() }} </td>
+                <td> {{ uneCommande.getDateCde() }} </td>
+                <td> {{ uneCommande.getNoFacture() }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+    Fin de l'affichage
+{% endblock %}

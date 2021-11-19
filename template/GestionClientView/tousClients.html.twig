@@ -11,6 +11,7 @@
             <th>cp</th>
             <th>Ville</th>
             <th>Tel</th>
+            <th></th>
         </tr>
         {% for unClient in clients %}
             <tr>
@@ -21,11 +22,12 @@
                 {% if unClient.getAdresseRue2Cli() %}
                     <td> {{ unClient.getAdresseRue2Cli() }}</td>
                 {% else %}
-                    <td>  </td>
+                    <td></td>
                 {% endif %}
                 <td> {{ unClient.getCpCli() }} </td>
                 <td> {{ unClient.getVilleCli() }} </td>
                 <td> {{ unClient.getTelCli() }} </td>
+                <td><a class="btn btn-info" href="http://monpetitmvc/?c=gestionClient&a=commandesUnClient&id={{ unClient.getId() }}"> voir commandes </a></td>
             </tr>
         {% endfor %}
     </table>
