@@ -1,39 +1,10 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
     <h2 class="text-center"> Liste des clients </h2>
-    <table class="table">
-        <tr>
-            <th>Num</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Adresse</th>
-            <th>Complement</th>
-            <th>cp</th>
-            <th>Ville</th>
-            <th>Tel</th>
-            <th></th>
-        </tr>
-        {% for unClient in clients %}
-            <tr>
-                <td> {{ unClient.getId() }} </td>
-                <td> {{ unClient.getNomCli() }} </td>
-                <td> {{ unClient.getPrenomCli() }} </td>
-                <td> {{ unClient.getAdresseRue1Cli() }} </td>
-                {% if unClient.getAdresseRue2Cli() %}
-                    <td> {{ unClient.getAdresseRue2Cli() }}</td>
-                {% else %}
-                    <td></td>
-                {% endif %}
-                <td> {{ unClient.getCpCli() }} </td>
-                <td> {{ unClient.getVilleCli() }} </td>
-                <td> {{ unClient.getTelCli() }} </td>
-                <td><a class="btn btn-info" href="http://monpetitmvc/?c=gestionClient&a=commandesUnClient&id={{ unClient.getId() }}"> voir commandes </a></td>
-            </tr>
-        {% endfor %}
-    </table>
-    <p>Nombre de clients trouvés : {{ nbClients }} </p>
+    {{ include ('/blocks/arrayClients.html.twig') }}
 {% endblock %}
 {% block footer %}
+    <p>Nombre de clients trouvés : {{ nbClients }} </p>
     {{ parent() }}
     Fin de l'affichage
 {% endblock %}

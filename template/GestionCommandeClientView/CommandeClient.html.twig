@@ -1,33 +1,18 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
-        <h2 class="text-center"> Identification du client </h2>
-    <table class="table">
-        <tr>
-            <th>Num</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Adresse</th>
-            <th>Complement</th>
-            <th>cp</th>
-            <th>Ville</th>
-            <th>Tel</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td> {{ client.getId() }} </td>
-            <td> {{ client.getNomCli() }} </td>
-            <td> {{ client.getPrenomCli() }} </td>
-            <td> {{ client.getAdresseRue1Cli() }} </td>
-            {% if client.getAdresseRue2Cli() %}
-                <td> {{ client.getAdresseRue2Cli() }}</td>
-            {% else %}
-                <td></td>
+    <h2 class="text-center"> Identification du client </h2>
+    {% if unClient %}
+        {% block affiche %}
+            <h2> Informations du client numéro {{ unClient.getId() }} </h2>
+            <p> {{ unClient.getPrenomCli() }} {{ unClient.getNomCli() }} </p>
+            <p> {{ unClient.getAdresseRue1Cli() }}
+            {% if unClient.getAdresseRue2Cli() %}
+                <p> {{ unClient.getAdresseRue2Cli() }}
             {% endif %}
-            <td> {{ client.getCpCli() }} </td>
-            <td> {{ client.getVilleCli() }} </td>
-            <td> {{ client.getTelCli() }} </td>
-        </tr>
-    </table>
+            <p> {{ unClient.getCpCli() }} {{ unClient.getVilleCli() }} </p>
+            <p> {{ unClient.getTelCli() }} </p>
+        {% endblock %}
+    {% endif %}
     <h2 class="text-center"> Liste des commandes </h2>
     <table class="table">
         <tr>
