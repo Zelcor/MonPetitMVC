@@ -4,7 +4,7 @@
     {{ include ('/blocks/arrayClients.html.twig') }}
 {% endblock %}
 {% block footer %}
-    <p>Nombre de clients trouvés : {{ nbClients }} </p>
+    <p>Nombre de clients trouvés : {{ clients|length }} </p>
     {{ parent() }}
     Fin de l'affichage
 {% endblock %}

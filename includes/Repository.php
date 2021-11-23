@@ -108,7 +108,7 @@ class Repository {
 
     public function findColumnDistinctValues($colonne) {
         $sql = "select distinct " . $colonne . " libelle from " . $this->table . " order by 1;";
-        return $this->connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->connexion->query($sql)->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function findBy($params) {

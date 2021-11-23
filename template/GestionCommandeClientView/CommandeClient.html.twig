@@ -12,24 +12,30 @@
             <p> {{ unClient.getCpCli() }} {{ unClient.getVilleCli() }} </p>
             <p> {{ unClient.getTelCli() }} </p>
         {% endblock %}
+        {% if uneCommande %}
+            <h2 class="text-center"> Liste des commandes </h2>
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>idClient</th>
+                    <th>Date</th>
+                    <th>n°Facture</th>
+                </tr>
+                {% for uneCommande in commandes %}
+                    <tr>
+                        <td> {{ uneCommande.getId() }} </td>
+                        <td> {{ uneCommande.getIdClient() }} </td>
+                        <td> {{ uneCommande.getDateCde() }} </td>
+                        <td> {{ uneCommande.getNoFacture() }} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="alert alert-danger text-center" role= pas> Ce client n'a pas de commande</div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger text-center" role="alert"> Ce client est inexistant. </div>
     {% endif %}
-    <h2 class="text-center"> Liste des commandes </h2>
-    <table class="table">
-        <tr>
-            <th>id</th>
-            <th>idClient</th>
-            <th>Date</th>
-            <th>n°Facture</th>
-        </tr>
-        {% for uneCommande in commandes %}
-            <tr>
-                <td> {{ uneCommande.getId() }} </td>
-                <td> {{ uneCommande.getIdClient() }} </td>
-                <td> {{ uneCommande.getDateCde() }} </td>
-                <td> {{ uneCommande.getNoFacture() }} </td>
-            </tr>
-        {% endfor %}
-    </table>
 {% endblock %}
 {% block footer %}
     {{ parent() }}

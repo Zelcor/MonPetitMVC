@@ -37,7 +37,6 @@ class GestionClientController {
             $vue = str_replace('Controller', 'View', $r->getShortName()) . "/tousClients.html.twig";
             MyTwig::afficheVue($vue, array('clients' => $clients));
         }
-        $nbClients = $this->nbClients();
     }
 
     public function creerClient($params){
@@ -59,14 +58,7 @@ class GestionClientController {
         $modele = new GestionClientModel();
         $modele->enregistreClient($client);
     }
-    
-    public function nbClients()
-    {
-        $repository = Repository::getRepository("APP\Entity\Client");
-        $nbClients = $repository->countRows();
-        echo "nb clients = " . $nbClients;
-    }
-    
+        
     public function testFindBy($params) {
         $repository = Repository::getRepository("APP\Entity\Client");
         $params = array("titreCli" => "Monsieur", "villeCli" => "Toulon");
@@ -102,7 +94,6 @@ class GestionClientController {
                 $paramsVue['criteres'] = $criteres;
             }
         }
-        var_dump($paramsVue);
         $vue = "GestionClientView\\filtreClients.html.twig";
         MyTwig::afficheVue($vue, $paramsVue); //pb : on send des array et il attend du string
     }
@@ -123,6 +114,7 @@ class GestionClientController {
         $id = (int)$id;
         $modele = new GestionCommandeClientModel();
         $commandes = $modele->findCommandes($id);
+        $params['commandes']=$commandes;
         $vue = 'GestionCommandeClientView/CommandeClient.html.twig';
         MyTwig::afficheVue($vue, $params);
     }
