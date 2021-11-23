@@ -77,7 +77,7 @@ class Repository {
         $sql = "select count(*) as nb from " . $this->table;
         $ligne = $this->connexion->query($sql);
         $ligne->execute();
-        return $ligne->fetch()['nb'];
+        return $ligne->fetchColumn()['nb'];
     }
     
     public function __call($methode,$params){
