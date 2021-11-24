@@ -146,4 +146,29 @@ class GestionClientController {
         $repository->modifieTable($client);
         header('Location:?c=GestionClient&a=chercheTous');
     }
+    
+    public function rechercheClientsAjax($params) {
+        $repository = Repository::getRepository("APP\Entity\Client");
+        if(empty($params['titreCli']) && empty($params['cpCli']) || empty($params['villeCli'])){
+            $titres = $repository->findColumnDistinctValues('titreCli');
+            $cps = $repository->findColumnDistinctValues('cpCli');
+            $villes = $repository->findColumnDistinctValues('villeCli');
+            $paramsVue['titres'] = $titres;
+            $paramsVue['cps'] = $cps;
+            $paramsVue['villes'] = $villes;
+            $vue = "GestionClientView\\filtreClientsAjax.html.twig";
+        }else{
+            //retour du formulaire de choix de filtre
+            $element = "Choisir...";
+            while(in_array($element, $params)){
+                unset($params[array_search($element,$params)]);
+            }
+            if (count($params) > 0){
+                $clients = $repository->findBy($params);
+                $paramsVue['lesClients'] = $clients;
+                $vue = "block/arrayClients.html.twig";
+            }
+        }
+        MyTwig::afficheVue($vue, $paramsVue);
+    }
 }

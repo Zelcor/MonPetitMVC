@@ -1,1 +1,35 @@
-{# empty Twig template #}
+{% if lesClients %}
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>cp</th>
+            <th>ville</th>
+            <th>Tel</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for unClient in lesClients %}
+            <tr>
+                <td>{{ unClient.getId() }}</td>
+                <td>{{ unClient.getTitreCli() }}</td>
+                <td>{{ unClient.getNomCli() }}</td>
+                <td>{{ unClient.getPrenomCli() }}</td>
+                <td>{{ unClient.getAdresseRue1Cli() }}</td>
+                <td>{{ unClient.getAdresseRue2Cli() }}</td>
+                <td>{{ unClient.getCpCli() }}</td>
+                <td>{{ unClient.getVilleCli() }}</td>
+                <td>{{ unClient.getTelCli() }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <div class="alert alert-danger">
+        <center>Aucun client trouvé pour ces critères</center>
+    </div>
+{% endif %}
