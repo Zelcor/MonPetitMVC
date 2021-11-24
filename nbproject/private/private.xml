@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/creerClient.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/unClientAjax.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/includes/Repository.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/blocks/singleClientModif.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/unClient.php</file>
             <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/unClient.html.twig</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/public/index.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Model/GestionCommandeClientModel.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Model/GestionClientModel.php</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/blocks/clientRecherche.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/public/assets/js/GestionClient/clientsFunctions.js</file>
             <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Controller/GestionClientController.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Entity/Client.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/src/Entity/Commande.php</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/tousClients.html.twig</file>
-            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionCommandeClientView/CommandeClient.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/blocks/singleClient.html.twig</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/public/assets/js/creationXHR.js</file>
+            <file>file:/C:/Users/clement.loze/Documents/NetBeansProjects/MonPetitMVC/template/GestionClientView/filtreClients.html.twig</file>
         </group>
     </open-files>
 </project-private>
