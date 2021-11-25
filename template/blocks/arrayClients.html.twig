@@ -1,4 +1,5 @@
-
+<h2>Résultat recherche :</h2>
+{% if clients %}
 <table class="table table-responsive">
     <tr>
         <th>Num</th>
@@ -29,3 +30,9 @@
         </tr>
     {% endfor %}
 </table>
+    <p>Nombre de clients trouvés : {{ clients|length }} </p>
+{% else %}
+    <div class="alert alert-danger">
+        <h5> Aucun client trouvé pour ces critères</h5>
+    </div>
+{% endif %}

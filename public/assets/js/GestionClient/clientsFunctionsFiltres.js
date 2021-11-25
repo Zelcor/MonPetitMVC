@@ -1,5 +1,5 @@
 function filtrerClient(){
-    if (tires.value == "Choisir..." && villes.value == "Choisir..." && cps.value == "Choisir..."){
+    if (titres.value == "Choisir..." && villes.value == "Choisir..." && cps.value == "Choisir..."){
         document.getElementById("retour").style.visibility = "hidden";
     } else {
         var xhr = new XMLHttpRequest();
